@@ -1,0 +1,68 @@
+<mujoco>
+    <option 
+        timestep="0.01" 
+        gravity="0 0 -9.81" 
+        cone="pyramidal" 
+        impratio="0.1"
+    />
+    <compiler meshdir="meshes"/>
+    
+    <asset>
+        <mesh name="Body" file="body.stl"/>
+        <mesh name="Head" file="head.stl"/>
+        <mesh name="ServoMotor" file="ServoMotor.stl"/>
+    </asset>
+
+    <worldbody>
+        <!-- Sol avec contact stabilisé -->
+        <geom 
+            name="ground" 
+            type="plane" 
+            size="5 5 0.1" 
+            rgba="0 1 0 1"
+            solref="0.0005 1.8"
+            solimp="0.92 0.98 0.001"
+            friction="1.2 0.7 0.2"/>
+
+        <!-- Objet mesh avec paramètres anti-vibration -->
+        <body name="Body" pos="0 0 0.5">
+            <joint name="BodyFree" type="free" damping="0.5" armature="0.1"/>
+            <geom 
+                name="BodyGeom"
+                type="mesh" 
+                mesh="Body" 
+                mass="10" 
+                solref="0.0008 2"
+                solimp="0.9 0.97 0.002"
+                friction="1.1 0.5 0.15"
+                rgba="1 0 0 1"
+            />
+        </body>
+        <body name="Head" pos="0 0 0.5">
+            <joint name="HeadFree" type="free" damping="0.5" armature="0.1"/>
+            <geom 
+                name="HeadGeom"
+                type="mesh" 
+                mesh="Head" 
+                mass="10" 
+                solref="0.0008 2"
+                solimp="0.9 0.97 0.002"
+                friction="1.1 0.5 0.15"
+                rgba="1 0 0 1"
+            />
+        </body>
+        <body name="ServoMotor" pos="0 0 0.5">
+            <joint name="ServoMotorFree" type="free" damping="0.5" armature="0.1"/>
+            <geom 
+                name="ServoMotorGeom"
+                type="mesh" 
+                mesh="ServoMotor" 
+                mass="10" 
+                solref="0.0008 2"
+                solimp="0.9 0.97 0.002"
+                friction="1.1 0.5 0.15"
+                rgba="1 0 0 1"
+            />
+        </body>
+    </worldbody>
+</mujoco>
