@@ -1,0 +1,14 @@
+{
+    "url": "https://cad.onshape.com/documents/9ec2cb846d9d70ae61304659/w/ba4d2c22ff07b7474239914d/e/04263f3c44f724c158d2da0b",
+    "output_format": "mujoco",
+    "assemblyName": "Robot",
+    "joint_properties": {
+        "*": {
+            "actuated": true,
+            "forcerange": 0.35,
+            "frictionloss": 0.5,
+            "limits": [-1.57, 1.57]  // par exemple : -90° à +90°
+        }
+    }
+}
+

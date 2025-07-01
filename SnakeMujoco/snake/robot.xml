@@ -1,0 +1,115 @@
+<?xml version="1.0" ?>
+<!-- Generated using onshape-to-robot -->
+<!-- Onshape https://cad.onshape.com/documents/9ec2cb846d9d70ae61304659/w/ba4d2c22ff07b7474239914d/e/04263f3c44f724c158d2da0b -->
+<mujoco model="snake">
+  <compiler angle="radian" meshdir="assets" autolimits="true"/>
+  <default>
+    <default class="snake">
+      <joint frictionloss="0.1" armature="0.005"/>
+      <position kp="50" dampratio="1"/>
+      <default class="visual">
+        <geom type="mesh" contype="0" conaffinity="0" group="2"/>
+      </default>
+      <default class="collision">
+        <geom group="3"/>
+      </default>
+    </default>
+  </default>
+  <worldbody>
+    <!-- Link servo2 -->
+    <body name="servo2" pos="0 0 0" quat="1 0 0 0" childclass="snake">
+      <freejoint name="servo2_freejoint"/>
+      <inertial pos="-0.0502156 4.07719e-13 0.0269005" mass="0.0138" fullinertia="7.56082e-07 1.07689e-06 5.43667e-07 -8.52222e-23 -5.73071e-08 -1.01692e-22"/>
+      <!-- Part servo2 -->
+      <geom type="mesh" class="visual" pos="-0.0384702 5.00034e-16 3.18303e-17" quat="0.707107 0.707107 -1.11022e-16 -1.01413e-17" mesh="servo2" material="servo2_material"/>
+      <geom type="mesh" class="collision" pos="-0.0384702 5.00034e-16 3.18303e-17" quat="0.707107 0.707107 -1.11022e-16 -1.01413e-17" mesh="servo2" material="servo2_material"/>
+      <!-- Link head -->
+      <body name="head" pos="-0.0553202 5.05155e-16 0.007" quat="1 -1.06915e-16 1.11022e-16 -1.28223e-16">
+        <!-- Joint from servo2 to head -->
+        <joint axis="0 0 1" name="Servo1" type="hinge" range="-1.57 1.57" frictionloss="0.1"/>
+        <inertial pos="0.0548283 -1.49039e-08 -0.00176061" mass="0.054" fullinertia="1.3842e-05 4.33369e-05 5.60532e-05 -2.06407e-11 1.32445e-07 4.76261e-12"/>
+        <!-- Part head -->
+        <geom type="mesh" class="visual" pos="-0.05315 -5.15091e-16 -0.007" quat="0.707107 0.707107 1.11022e-16 4.79386e-17" mesh="head" material="head_material"/>
+        <geom type="mesh" class="collision" pos="-0.05315 -5.15091e-16 -0.007" quat="0.707107 0.707107 1.11022e-16 4.79386e-17" mesh="head" material="head_material"/>
+      </body>
+      <!-- Link body1 -->
+      <body name="body1" pos="-0.0642209 -2.67714e-10 0.02" quat="1.06915e-16 1 -7.45931e-17 6.79763e-18">
+        <!-- Joint from servo2 to body1 -->
+        <!-- Joint is "fixed", skipping it -->
+        <inertial pos="-0.029902 4.8746e-08 0.0115129" mass="0.0108" fullinertia="1.33619e-06 1.12727e-05 1.10359e-05 -2.14605e-11 1.70929e-06 1.12583e-11"/>
+        <!-- Part body1 -->
+        <geom type="mesh" class="visual" pos="-0.0452492 -2.67714e-10 0.02" quat="0.707107 -0.707107 1.11022e-16 -1.59463e-16" mesh="body1" material="body1_material"/>
+        <geom type="mesh" class="collision" pos="-0.0452492 -2.67714e-10 0.02" quat="0.707107 -0.707107 1.11022e-16 -1.59463e-16" mesh="body1" material="body1_material"/>
+        <!-- Link servo2_2 -->
+        <body name="servo2_2" pos="-0.0620992 -2.67714e-10 0.013" quat="1 1.03799e-16 -1.11022e-16 -1.11298e-16">
+          <!-- Joint from body1 to servo2_2 -->
+          <joint axis="0 0 1" name="Servo2" type="hinge" range="-1.57 1.57" frictionloss="0.1"/>
+          <inertial pos="0.00510462 -4.07211e-13 -0.0199005" mass="0.0138" fullinertia="7.56082e-07 1.07689e-06 5.43667e-07 9.1835e-68 5.73071e-08 1.99525e-66"/>
+          <!-- Part servo2_2 -->
+          <geom type="mesh" class="visual" pos="0.01685 0 0.007" quat="0.707107 -0.707107 -0 4.32978e-17" mesh="servo2" material="servo2_material"/>
+          <geom type="mesh" class="collision" pos="0.01685 0 0.007" quat="0.707107 -0.707107 -0 4.32978e-17" mesh="servo2" material="servo2_material"/>
+          <!-- Link body1_2 -->
+          <body name="body1_2" pos="-0.00890077 2.67714e-10 -0.013" quat="1 0 -2.30876e-16 -8.83132e-18">
+            <!-- Joint from servo2_2 to body1_2 -->
+            <!-- Joint is "fixed", skipping it -->
+            <inertial pos="-0.029902 4.8746e-08 0.0115129" mass="0.0108" fullinertia="1.33619e-06 1.12727e-05 1.10359e-05 -2.14605e-11 1.70929e-06 1.12583e-11"/>
+            <!-- Part body1_2 -->
+            <geom type="mesh" class="visual" pos="-0.0452492 -2.67714e-10 0.02" quat="0.707107 -0.707107 0 4.32978e-17" mesh="body1" material="body1_material"/>
+            <geom type="mesh" class="collision" pos="-0.0452492 -2.67714e-10 0.02" quat="0.707107 -0.707107 0 4.32978e-17" mesh="body1" material="body1_material"/>
+            <!-- Link servo2_3 -->
+            <body name="servo2_3" pos="-0.0620992 -2.67714e-10 0.013" quat="1 0 -2.30876e-16 -8.83132e-18">
+              <!-- Joint from body1_2 to servo2_3 -->
+              <joint axis="0 0 1" name="Servo3" type="hinge" range="-1.57 1.57" frictionloss="0.1"/>
+              <inertial pos="0.00510462 -4.07211e-13 -0.0199005" mass="0.0138" fullinertia="7.56082e-07 1.07689e-06 5.43667e-07 9.1835e-68 5.73071e-08 1.99525e-66"/>
+              <!-- Part servo2_3 -->
+              <geom type="mesh" class="visual" pos="0.01685 0 0.007" quat="0.707107 -0.707107 -0 4.32978e-17" mesh="servo2" material="servo2_material"/>
+              <geom type="mesh" class="collision" pos="0.01685 0 0.007" quat="0.707107 -0.707107 -0 4.32978e-17" mesh="servo2" material="servo2_material"/>
+              <!-- Link body1_3 -->
+              <body name="body1_3" pos="-0.00890077 2.67714e-10 -0.013" quat="1 0 -2.30876e-16 -8.83132e-18">
+                <!-- Joint from servo2_3 to body1_3 -->
+                <!-- Joint is "fixed", skipping it -->
+                <inertial pos="-0.029902 4.8746e-08 0.0115129" mass="0.0108" fullinertia="1.33619e-06 1.12727e-05 1.10359e-05 -2.14605e-11 1.70929e-06 1.12583e-11"/>
+                <!-- Part body1_3 -->
+                <geom type="mesh" class="visual" pos="-0.0452492 -2.67714e-10 0.02" quat="0.707107 -0.707107 0 4.32978e-17" mesh="body1" material="body1_material"/>
+                <geom type="mesh" class="collision" pos="-0.0452492 -2.67714e-10 0.02" quat="0.707107 -0.707107 0 4.32978e-17" mesh="body1" material="body1_material"/>
+                <!-- Link servo2_4 -->
+                <body name="servo2_4" pos="-0.0620992 -2.67714e-10 0.013" quat="1 0 -2.30876e-16 -8.83132e-18">
+                  <!-- Joint from body1_3 to servo2_4 -->
+                  <joint axis="0 0 1" name="Servo4" type="hinge" range="-1.57 1.57" frictionloss="0.1"/>
+                  <inertial pos="0.00510462 -4.07211e-13 -0.0199005" mass="0.0138" fullinertia="7.56082e-07 1.07689e-06 5.43667e-07 9.1835e-68 5.73071e-08 1.99525e-66"/>
+                  <!-- Part servo2_4 -->
+                  <geom type="mesh" class="visual" pos="0.01685 0 0.007" quat="0.707107 -0.707107 -0 4.32978e-17" mesh="servo2" material="servo2_material"/>
+                  <geom type="mesh" class="collision" pos="0.01685 0 0.007" quat="0.707107 -0.707107 -0 4.32978e-17" mesh="servo2" material="servo2_material"/>
+                  <!-- Link body1_4 -->
+                  <body name="body1_4" pos="-0.00890077 2.67714e-10 -0.013" quat="1 0 -2.30876e-16 -8.83132e-18">
+                    <!-- Joint from servo2_4 to body1_4 -->
+                    <!-- Joint is "fixed", skipping it -->
+                    <inertial pos="-0.029902 4.8746e-08 0.0115129" mass="0.0108" fullinertia="1.33619e-06 1.12727e-05 1.10359e-05 -2.14605e-11 1.70929e-06 1.12583e-11"/>
+                    <!-- Part body1_4 -->
+                    <geom type="mesh" class="visual" pos="-0.0452492 -2.67714e-10 0.02" quat="0.707107 -0.707107 0 4.32978e-17" mesh="body1" material="body1_material"/>
+                    <geom type="mesh" class="collision" pos="-0.0452492 -2.67714e-10 0.02" quat="0.707107 -0.707107 0 4.32978e-17" mesh="body1" material="body1_material"/>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <asset>
+    <mesh file="body1.stl"/>
+    <mesh file="servo2.stl"/>
+    <mesh file="head.stl"/>
+    <material name="servo2_material" rgba="0.627451 0.627451 0.627451 1"/>
+    <material name="head_material" rgba="0.627451 0.627451 0.627451 1"/>
+    <material name="body1_material" rgba="0.627451 0.627451 0.627451 1"/>
+  </asset>
+  <actuator>
+    <position class="snake" name="Servo1" joint="Servo1" forcerange="-0.35 0.35" inheritrange="1"/>
+    <position class="snake" name="Servo2" joint="Servo2" forcerange="-0.35 0.35" inheritrange="1"/>
+    <position class="snake" name="Servo3" joint="Servo3" forcerange="-0.35 0.35" inheritrange="1"/>
+    <position class="snake" name="Servo4" joint="Servo4" forcerange="-0.35 0.35" inheritrange="1"/>
+  </actuator>
+  <equality/>
+</mujoco>
