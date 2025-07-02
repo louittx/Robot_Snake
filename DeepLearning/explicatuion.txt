@@ -1,0 +1,2 @@
+Sur ce doossier je vais suivre un tuou pour aprender le deeeplearning docn il y aura tout mais code pour comprendre.
+Ensuit je vais réalsier una utre code pour mon projet est l'amprendre automatiquement sur mujoco et apres le tester sr contition réel.
