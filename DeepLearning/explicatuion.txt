@@ -1,2 +1,54 @@
 Sur ce doossier je vais suivre un tuou pour aprender le deeeplearning docn il y aura tout mais code pour comprendre.
 Ensuit je vais réalsier una utre code pour mon projet est l'amprendre automatiquement sur mujoco et apres le tester sr contition réel.
+
+Perceeptron (def): modele des passe permet la classification en binnair linairement
+
+z(x1,x2) = w1x1+w2x2+b 
+z ets le neron , x1 et x2 ; w1 et w2 sont des poids et b le biais:
+
+ont rajoute un probapilitre pour savoir si notre point et egarder de z ou pas, cela permet de s'avoir si il est sur a 100% ou pas
+fonction sigmoïde(logistique) :
+a(z) = @(z(i)) = 1/(1+e^-z)
+@ = sigma
+
+dans la berobs il y a dons z et a
+z = ,fonction lineaire
+a = fonction d'activations
+
+Nous voulons regler w et b pour minimiser els ereur
+
+Fonction coûte(Loss Functions) c'est un fonction qui permet de quatifier mes erreurs effectuées
+
+LL = somme de i=1 jusqua "m" de (y1log(ai)+((1-yi)log(1-ai))) algormite de maximasation pour avoir le meilleur resembeble
+m nombre d eprobapilitre que nous avons
+
+log loss  L= (-1/m)*LL invrec epour minimiser docn algormiet de minimastion
+pour minimiser alogorimte de la dessende de gradiant: 
+constite a ajsuter w et b de façons a minimes log loss
+il fout donc derteminre comment cette fonction varie e, fonction des different parametre
+w(t+1) =w(t) - a * (dL/dw(t))
+w(t+1) = parametr de w a l'instant t+1
+w(t) = parametre de w a l'inte t 
+a pas d'apredisasnge positif
+(dL/dw(t)) = gradient à l'inte t 
+
+log(a) = ln(a)
+faire l'ex1 et voir la reponce
+
+Pour ganere des prfomanceont va passer par de matruice donc convertire les formule en matrice 
+
+quand il est ecrit exposant garnd T c'est tarnposer
+
+attdioner 2 matrcie in faut qu'il face la memme taille parlle pour soutrasser le transposante c'est de faire un syimetre sur la diaognale
+pour les multiplier il faut que la ligne soit etgale a la colone de l'autre  ppuis ont faite la primer case foir l'autre permie case
+ensuit ont dessend d'un case donc pour la premier matrcie sotn ce depalce en ligne et l'autre ont ce depalce en collones, ont les multiplie
+et ont ajouet ce resulta sur la permier mulplication
+
+
+veteriser les equation que nous avons eux.
+un letre en majuctle represnet la matrcie de la lterre assiosier si elle reste en municauel cela change pas
+Z = X*W+b
+A = @(Z) = (1/(1+e-Z))
+
+Jacobien vecteur contenai different gradiant
+ 
