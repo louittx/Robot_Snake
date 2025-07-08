@@ -52,3 +52,6 @@ A = @(Z) = (1/(1+e-Z))
 
 Jacobien vecteur contenai different gradiant
  
+
+ Modele en overfinti
+ c'est que le modéle n'est plsu capale de géneraliser
