@@ -1,0 +1,21 @@
+<mujoco model="rolling_cube">
+    <option timestep="0.01" gravity="0 0 -9.81"/> <!-- premte de definir la graviter --> 
+    <worldbody> <!-- la ou nous créon les objet -->
+        <!-- Sol -->
+        <geom type="plane" size="5 5 0.1" rgba="0 1 0 1"/> <!--defint le sol / size = la dimention / rgba = coleur de l'objet -->
+
+        <!-- Cube avec joint libre -->
+        <body name="cube" pos="0 0 0.5"> <!-- body = c'est un corp qui s'aplle cube, et qu'il a commen position de depart x = 0 y= 0 z = 0.5 en m -->
+            <joint name="free_joint" type="free"/> <!-- joint = articulation type voir le tableaux -->
+            <geom type="box" size="0.2 0.2 0.2" mass="1" rgba="0 0 1 1"/> <!-- type "box" = boite, dimention, masse en kg -->
+        </body>
+    </worldbody>
+
+    <!-- Contrôleur pour appliquer un couple (torque) -->
+    <actuator>
+        <motor joint="free_joint" ctrlrange="-10 10" gear="0 1 0 0 0 0"/> <!-- gear = [RX,RY,RZ,TX,TY,TZ -->
+    </actuator>
+</mujoco>
+
+
+<!-- -->
