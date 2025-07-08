@@ -1,31 +1,45 @@
 # Robot_Snake
-Le but de ce projet est d'aprndre le fonctionnement d'une IA qui permetra de faire anvancer un Robot,
-Pour le type de Robot j'ai réaliser un robot serpent.
 
-## Composant du Projet :
-Sur ce porjte il y a besoind de plusssieur composant : 
-- Servo-Moteur(mettre la refet) : permet de faire le deplacement du robot
-- Arduino nano : Micro-controleur permet d'apliquer les consigne au servoMoteur
+L’objectif de ce projet est de comprendre le fonctionnement d’une intelligence artificielle capable de faire avancer un robot.  
+Le robot choisi pour cette expérimentation est un robot serpent.
 
-Pour le Corp de notre Robot vous pouvons trouver les modéles 3D des different piece
-C'est piece ont etait modélisare sur fusion 360 puis assembler sur Onshape
+## Composants du projet
 
-## Réalisation de la simulation
-Pour ce projet nous avpons réaliser une simulation pour permter l'entrenement de notre IA.
-Pour cela nous avons utiliser Mujoco.
+Ce projet nécessite plusieurs composants :  
+- **Servo-moteur** (référence à préciser) : assure le déplacement du robot  
+- **Arduino Nano** : microcontrôleur chargé d’envoyer les consignes aux servo-moteurs
 
-### Initilalisation de Mujoco
-Pour utiliser Mujoco nousa alons passer par Python aevc un environement virtuelle
-**Création de dossier virtuelle** : `phyton -m venv .ven` or `phyton3 -m venv .ven`
-**Acitiver l'environemet virtuelle** : `source .ven\bin\activate`
-**Instalalation des lib** : 
+Concernant le châssis du robot, les modèles 3D des différentes pièces sont disponibles.  
+Ces pièces ont été modélisées avec **Fusion 360**, puis assemblées sous **Onshape**.
+
+## Simulation
+
+Une simulation a été mise en place afin d'entraîner notre intelligence artificielle.  
+Pour cela, nous utilisons le moteur de simulation **MuJoCo**.
+
+### Initialisation de MuJoCo
+
+L'utilisation de MuJoCo se fait via **Python** avec un environnement virtuel.
+
+- **Création de l’environnement virtuel** :  
+  `python -m venv .venv` ou `python3 -m venv .venv`
+
+- **Activation de l’environnement virtuel** :  
+  `source .venv/bin/activate`
+
+- **Installation des bibliothèques nécessaires** :
 ```
 pip install mujoco
 pip install onshape-to-robot
 ```
-Pour convertire notre assemblage nous utiliser la lib **onshape-to-robot** qui permte de crées un XML( environement de notre model 3D dans mujoco) aevc les liason les poids et les contarinte.
 
-Apres avoir fait cela nous pouvons lancer le programme **code**, SUr ce code vous devrait changer une varible cette variable devra etre le chemins vers le dossier Robot_Snake.
+Nous utilisons la bibliothèque **onshape-to-robot** pour convertir l’assemblage 3D en fichier XML, compatible avec MuJoCo.  
+Ce fichier XML décrit l’environnement du robot (liaisons, poids, contraintes, etc.).
 
-### IA 
-Sur ce github nous avosn un dossier **DeepLearning** ce dossier contient mon aprendisage de l'IA grace des tuto sur youtube (mttre le liens des vidéo)
+Une fois le fichier généré, vous pouvez lancer le programme principal (**code**).  
+N'oubliez pas de modifier une variable dans ce code : elle doit contenir le chemin vers le dossier `Robot_Snake`.
+
+### Intelligence Artificielle
+
+Le répertoire **DeepLearning** contient mes expérimentations en apprentissage automatique, réalisées à partir de tutoriels trouvés sur YouTube (liens à ajouter).
+
