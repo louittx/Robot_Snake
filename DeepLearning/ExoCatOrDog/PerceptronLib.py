@@ -54,7 +54,7 @@ def Algo(X,y,a=0.1,i=100):
     plt.show()
     return (W,b)
 
-def Algo(XTrain,yTrain,XTest,yTest,a=0.1,i=100):
+def Algo2(XTrain,yTrain,XTest,yTest,a=0.1,i=100):
     W,b = init(XTrain)
     LogLossTrain=[]
     AccTrain = []
