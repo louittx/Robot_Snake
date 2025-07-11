@@ -11,7 +11,7 @@ def init(x):
 
 def Model(X,W,b):
     Z = X.dot(W) + b
-    A = 1/ (1+np.exp(-Z))
+    A = (np.exp(Z)-np.exp(-Z))/(np.exp(Z)+np.exp(-Z))
     return A
 
 def Cost(A,y) : 
