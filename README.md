@@ -1,5 +1,16 @@
 # Robot_Snake
 
+## Commande 
+```
+python -m venv .venv
+source .venv/bin/activate
+pip install mujoco
+pip install onshape-to-robot
+pip install numpy
+pip install math
+pip install time
+```
+
 L’objectif de ce projet est de comprendre le fonctionnement d’une intelligence artificielle capable de faire avancer un robot.  
 Le robot choisi pour cette expérimentation est un robot serpent.
 
