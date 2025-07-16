@@ -4,9 +4,11 @@ import numpy as np
 from math import *
 import time
 
+CdXML = r"/home/louit/Documents/git/Robot_Snake" #mettre le chemins de vatre projet
+
 # lancer al connextiona evc les XMLS
-model = mujoco.MjModel.from_xml_path(r"/home/louit/Documents/pyton/SnakeMujoco/snake/robot.xml")
-model = mujoco.MjModel.from_xml_path(r"/home/louit/Documents/pyton/SnakeMujoco/snake/scene.xml")
+model = mujoco.MjModel.from_xml_path(rf"{CdXML}{r"/SnakeMujoco/snake/robot.xml"}")
+model = mujoco.MjModel.from_xml_path(rf"{CdXML}{r"/SnakeMujoco/snake/scene.xml"}")
 data = mujoco.MjData(model)
 
 #recuper l'id de la tete
