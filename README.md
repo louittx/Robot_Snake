@@ -5,8 +5,8 @@ source .venv/bin/activate
 pip install mujoco
 pip install onshape-to-robot
 pip install numpy
-pip install math
-pip install time
+//pip install math
+//pip install time
 ```
 # Robot_Snake
 
