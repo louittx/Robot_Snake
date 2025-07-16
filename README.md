@@ -1,6 +1,4 @@
-# Robot_Snake
-
-## Commande 
+# Commande 
 ```
 python -m venv .venv
 source .venv/bin/activate
@@ -10,6 +8,7 @@ pip install numpy
 pip install math
 pip install time
 ```
+# Robot_Snake
 
 L’objectif de ce projet est de comprendre le fonctionnement d’une intelligence artificielle capable de faire avancer un robot.  
 Le robot choisi pour cette expérimentation est un robot serpent.
