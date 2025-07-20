@@ -22,3 +22,10 @@ for i in range(1000):
         x3 -= a*(x3.grad) # oblicatoir sino il va plus en torch.tensor
     x3.grad.zero_()
 print(x3)
+
+#Sur torch il fonction comme Numpy avec les méme fonction 
+A = torch.arange(1,10).reshape(3, 3) # crées un vecteur lineaire de 1 à 9 puis le réajuste en matrcie 3 3
+B = torch.full((3,3),2)
+print('A = ',A,'\n')
+B = A @ B
+print('B = ',B,'\n')
