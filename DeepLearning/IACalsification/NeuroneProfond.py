@@ -1,4 +1,5 @@
 import numpy as np
+import torch
 import matplotlib.pyplot as plt
 from sklearn.datasets import *
 from sklearn.metrics import *
@@ -8,8 +9,8 @@ def init(Dimmension):
     C = len(Dimmension)
     Parametre = {}
     for i in range(1,C):
-        Parametre['W'+str(i)]=np.random.randn(Dimmension[i],Dimmension[i-1])
-        Parametre['b'+str(i)]=np.random.randn(Dimmension[i],1)
+        Parametre['W'+str(i)]=torch.tensor(np.random.randn(Dimmension[i],Dimmension[i-1]),requires_grad=True)
+        Parametre['b'+str(i)]=torch.tensor(np.random.randn(Dimmension[i],1),requires_grad=True)
     return Parametre
 
 def ForwardPropagation(X, Paramtre):
@@ -17,7 +18,7 @@ def ForwardPropagation(X, Paramtre):
     C = len(Paramtre) // 2
     for i in range (1,C+1):
         Z = Paramtre['W' +str(i)].dot(Activation['A'+str(i-1)])+Paramtre['b'+str(i)]
-        Activation['A'+str(i)] = 1/ (1+np.exp(-Z))
+        Activation['A'+str(i)] = 1/ (1+torch.exp(-Z))
     return Activation
 
 def BackProagation(y, Parametres, Activations):
