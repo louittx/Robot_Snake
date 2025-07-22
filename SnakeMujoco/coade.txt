@@ -4,7 +4,8 @@ import numpy as np
 from math import *
 import time
 
-CdXML = r"/home/louit/Documents/git/Robot_Snake" #mettre le chemins de vatre projet
+
+CdXML = r"/Users/xblanc/devs/Robot_Snake" #mettre le chemins de vatre projet
 
 # lancer al connextiona evc les XMLS
 model = mujoco.MjModel.from_xml_path(rf"{CdXML}{r"/SnakeMujoco/snake/robot.xml"}")
@@ -23,6 +24,8 @@ idx1 = model.jnt_qposadr[IDServo1]
 idx2 = model.jnt_qposadr[IDServo2]
 idx3 = model.jnt_qposadr[IDServo3]
 idx4 = model.jnt_qposadr[IDServo4]
+
+
 
 timestep = 0
 i = False
