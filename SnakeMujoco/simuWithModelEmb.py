@@ -37,7 +37,7 @@ print('\n\nInitial positions:')
 print(positions)
 
 
-nb_tries = 3  # Maximum number of tries to avoid infinite loop
+nb_tries = 100  # Maximum number of tries to avoid infinite loop
 
 timestep = 0
 i = False
@@ -99,10 +99,12 @@ with mujoco.viewer.launch_passive(model, data) as viewer:
             head_current_position = data.xpos[headID][0] if headID != -1 else 0
 
             if head_current_position > head_last_position + 0.01:
-                add_to_dataset(current_positions, current_next_position, True)
+                if len(current_positions) > 0:
+                    add_to_dataset(current_positions, current_next_position, True)
                 print("Snake has moved forward.")
             else:
-                add_to_dataset(current_positions, current_next_position, False)
+                if len(current_positions) > 0:
+                    add_to_dataset(current_positions, current_next_position, False)
                 print("Snake did not move forward.")
 
             print("All servo angles match the control values within a delta of 0.1.")
