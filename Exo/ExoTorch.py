@@ -29,3 +29,6 @@ B = torch.full((3,3),2)
 print('A = ',A,'\n')
 B = A @ B
 print('B = ',B,'\n')
+
+x = ((torch.rand(4, 4) * 180).float())-90
+print(x)
