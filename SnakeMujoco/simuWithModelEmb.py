@@ -37,7 +37,7 @@ print('\n\nInitial positions:')
 print(positions)
 
 
-nb_tries = 100  # Maximum number of tries to avoid infinite loop
+nb_tries = 10000  # Maximum number of tries to avoid infinite loop
 
 timestep = 0
 i = False
