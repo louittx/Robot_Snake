@@ -29,6 +29,8 @@ idx4 = model.jnt_qposadr[IDServo4]
 
 # Initialiser un modèle
 snakemodel = SnakeModelEmb()
+snakemodel.load_state_dict(torch.load("snake_model.pt", map_location=torch.device("cpu")))  # ou "cuda" si GPU
+snakemodel.eval()  # très important !
 # positions contain 4 positions for the 4 motors, the first three position are set to 0 for the motors, the last position is random
 positions = torch.zeros((4,4)).int()  # 4 positions, 4 motors
 positions[-1] = torch.randint(0, 181, (4,)).int()

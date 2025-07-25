@@ -1,0 +1,64 @@
+import mujoco
+import mujoco.viewer
+import numpy as np
+from math import *
+import time
+
+CdXML = r"/Users/xblanc/devs/Robot_Snake" #mettre le chemins de vatre projet
+
+# lancer al connextiona evc les XMLS
+model = mujoco.MjModel.from_xml_path(rf"{CdXML}{r"/SnakeMujoco/snake/robot.xml"}")
+model = mujoco.MjModel.from_xml_path(rf"{CdXML}{r"/SnakeMujoco/snake/scene.xml"}")
+data = mujoco.MjData(model)
+
+#recuper l'id de la tete
+headID = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY, "head")
+IDServo1 = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, "Servo1")
+IDServo2 = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, "Servo2")
+IDServo3 = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, "Servo3")
+IDServo4 = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, "Servo4")
+
+# recuper les Index des joinds
+idx1 = model.jnt_qposadr[IDServo1]
+idx2 = model.jnt_qposadr[IDServo2]
+idx3 = model.jnt_qposadr[IDServo3]
+idx4 = model.jnt_qposadr[IDServo4]
+
+# Initialiser un modèle
+snakemodel = SnakeModel()
+
+timestep = 0
+i = False
+with mujoco.viewer.launch_passive(model, data) as viewer:
+    while viewer.is_running():
+        mujoco.mj_step(model, data)
+
+        #controle des servo angle en radiant attention pas de limietre pour les angle mais il faute bien un ligmtre entre -90 et 90 et pas depasser
+        #pas encore regadre la vitesse des moteur surement a modigfer et le couple
+        data.ctrl[0] = pi/2
+        data.ctrl[1] = pi/4
+        data.ctrl[2] = pi/4
+        data.ctrl[3] = pi/4
+        # recuper les angles des joinds
+        angle1 = data.qpos[idx1]
+        angle2 = data.qpos[idx2]
+        angle3 = data.qpos[idx3]
+        angle4 = data.qpos[idx4]
+        print(f"Servo 1 = {angle1}, Servo 2 = {angle2}, Servo 3 = {angle3}, Servo 4 = {angle4}")
+
+        # si ont reçois bien l'ID
+        if headID != -1:
+            # trouve la position des l'objet
+            pos = data.xpos[headID]
+            print(f"Position de 'head' : x={pos[0]:.2f}, y={pos[1]:.2f}, z={pos[2]:.2f}") # return les 3 position x y et z
+        else:
+            print("Le body 'head' est introuvable.")
+        
+        
+        #verifer les temps passser
+        if(abs(angle1-(pi/2))<0.01 and i == False):
+            print(f"temps = {timestep}") # temps = 6.95 seconde cela me parrait pas bon a faire des test
+            i = True
+        timestep = timestep+0.05
+        viewer.sync()
+        time.sleep(0.05)
