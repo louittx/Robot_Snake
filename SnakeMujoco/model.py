@@ -10,7 +10,7 @@ class SnakeModel(torch.nn.Module):
         self.hidden_layer_size = 2 * self.num_moteurs * self.num_positions # Hidden size for each position
         self.hidden_1 = torch.nn.Linear(self.num_moteurs*self.num_positions, self.hidden_layer_size)
         self.hidden_2 = torch.nn.Linear(self.hidden_layer_size, self.num_moteurs)
-        self.activation = torch.nn.ReLU()
+        self.activation = torch.nn.Tanh()
         
     def forward(self, x):
         x = self.hidden_1(x)

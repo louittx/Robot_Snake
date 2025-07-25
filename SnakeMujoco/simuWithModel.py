@@ -6,7 +6,7 @@ import time
 from model import SnakeModel
 import torch
 
-CdXML = r"/Users/xblanc/devs/Robot_Snake" #mettre le chemins de vatre projet
+CdXML = r"/home/louit/Documents/git/Robot_Snake" #mettre le chemins de vatre projet
 
 # lancer al connextiona evc les XMLS
 model = mujoco.MjModel.from_xml_path(rf"{CdXML}{r"/SnakeMujoco/snake/robot.xml"}")
