@@ -2,17 +2,28 @@ import mujoco
 import mujoco.viewer
 import numpy as np
 from math import *
+import math
 import time
 
-CdXML = r"/Users/xblanc/devs/Robot_Snake" #mettre le chemins de vatre projet
+def OriantationRobot(Head,Tail):
+    dX = Head[0] - Tail[0]
+    dY = Head[1] - Tail[1]
+    
+    AngleRad = math.atan2(dY,dX)
+    print("AngleRad = ",AngleRad)
+    AngleDegree = (AngleRad*pi/180)%360
+    return AngleDegree
+
+CdXML = r"/home/louit/Documents/git/Robot_Snake" #mettre le chemins de vatre projet
 
 # lancer al connextiona evc les XMLS
 model = mujoco.MjModel.from_xml_path(rf"{CdXML}{r"/SnakeMujoco/snake/robot.xml"}")
 model = mujoco.MjModel.from_xml_path(rf"{CdXML}{r"/SnakeMujoco/snake/scene.xml"}")
 data = mujoco.MjData(model)
 
-#recuper l'id de la tete
+#recuper l'id de la tete/Users/xblanc/devs/Robot_Snake
 headID = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY, "head")
+tailID = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY, "body1_4")
 IDServo1 = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, "Servo1")
 IDServo2 = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, "Servo2")
 IDServo3 = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, "Servo3")
@@ -23,9 +34,6 @@ idx1 = model.jnt_qposadr[IDServo1]
 idx2 = model.jnt_qposadr[IDServo2]
 idx3 = model.jnt_qposadr[IDServo3]
 idx4 = model.jnt_qposadr[IDServo4]
-
-# Initialiser un modèle
-snakemodel = SnakeModel()
 
 timestep = 0
 i = False
@@ -44,21 +52,21 @@ with mujoco.viewer.launch_passive(model, data) as viewer:
         angle2 = data.qpos[idx2]
         angle3 = data.qpos[idx3]
         angle4 = data.qpos[idx4]
-        print(f"Servo 1 = {angle1}, Servo 2 = {angle2}, Servo 3 = {angle3}, Servo 4 = {angle4}")
-
+        #print(f"Servo 1 = {angle1}, Servo 2 = {angle2}, Servo 3 = {angle3}, Servo 4 = {angle4}")
         # si ont reçois bien l'ID
-        if headID != -1:
+        if headID != -1 and tailID != -1:
             # trouve la position des l'objet
-            pos = data.xpos[headID]
-            print(f"Position de 'head' : x={pos[0]:.2f}, y={pos[1]:.2f}, z={pos[2]:.2f}") # return les 3 position x y et z
+            HeadPos = data.xpos[headID]
+            TailPos = data.xpos[tailID]
         else:
             print("Le body 'head' est introuvable.")
-        
+        Angle = OriantationRobot(HeadPos,TailPos)
+        print(Angle)
         
         #verifer les temps passser
-        if(abs(angle1-(pi/2))<0.01 and i == False):
-            print(f"temps = {timestep}") # temps = 6.95 seconde cela me parrait pas bon a faire des test
-            i = True
+        #if(abs(angle1-(pi/2))<0.01 and i == False):
+        #    print(f"temps = {timestep}") # temps = 6.95 seconde cela me parrait pas bon a faire des test
+        #    i = True
         timestep = timestep+0.05
         viewer.sync()
         time.sleep(0.05)
