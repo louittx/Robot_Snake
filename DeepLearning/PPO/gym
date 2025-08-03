@@ -1,0 +1,12 @@
+import gymnasium as gym
+
+env = gym.make("CartPole-v1")  # Crée un environnement de type "poteau et chariot"
+
+obs, info = env.reset()  # Initialise l’environnement, renvoie l’observation initiale
+
+for _ in range(1000):
+    action = env.action_space.sample()  # Choisit une action aléatoire
+    obs, reward, terminated, truncated, info = env.step(action)  # Exécute une étape
+    env.render()  # Affiche visuellement l’environnement
+    if terminated or truncated:
+        obs, info = env.reset()

@@ -5,7 +5,8 @@ source .venv/bin/activate
 pip install mujoco
 pip install onshape-to-robot
 pip install numpy
-pip intasll torch
+pip install torch
+pip install tqdm
 ```
 # Robot_Snake
 
